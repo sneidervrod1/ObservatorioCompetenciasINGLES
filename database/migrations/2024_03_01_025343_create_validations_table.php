@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('validations', function (Blueprint $table) {
             $table->id();
             $table->integer('user');
-            $table->integer('percepUsabilidad');
-            $table->integer('modeloCompIngles');
-            $table->integer('percepUtilidad');
-            $table->integer('satisfaccionApp');
+            $table->string('nombre');
+            $table->string('codigo');
+            $table->string('curso');
+            $table->integer('UtilidadPercibida');
+            $table->integer('modeloCFacilidadDeUsoPercibida');
+            $table->integer('ActitudPorElUso');
+            $table->integer('IntencionDeUso');
             $table->integer('totalAceptacion');
             $table->timestamps();
 

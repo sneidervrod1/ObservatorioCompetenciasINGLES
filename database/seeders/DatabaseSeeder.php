@@ -19,7 +19,10 @@ class DatabaseSeeder extends Seeder
             CategoryLevelSeeder::class,
             SubcategorySeeder::class,
             RoleSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            ValidationCategorySeeder::class,
+            ValidationQuestionSeeder::class,
+
         ]);
 
         

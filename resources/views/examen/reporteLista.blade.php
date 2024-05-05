@@ -8,11 +8,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100  font-mono">
-                    <h3 class="text-xl font-extrabold dark:text-white"> REPORTS DE EXAMENES</h3> 
-                    <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400 mt-4">Escoja el nivel que desea ser calificado (A1, A2, B1, B2, C1, C2)  </p>
-                    <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">Para medir sus conocimientos en el nivel se calificaran 3 categorias (READING, SPEAKING, LISTENING)</p>
-                    <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem doloribus ullam at aliquid veniam sint sunt recusandae, eveniet porro quod fugiat dolores mollitia id ad, eaque vero! Placeat, velit veniam.</p>
-                    
+                    <h3 class="text-xl font-extrabold dark:text-white text-center"> REPORTES DE EXAMENES PRESENTADOS</h3> 
+     
+                    <p class="mb-4 mt-3 text-lg font-normal text-gray-500 dark:text-gray-400">Aquí encontrarás un análisis detallado de tus resultados en cada examen que has realizado. Nuestro objetivo es proporcionarte información clara y precisa sobre tu desempeño, brindándote el contexto necesario para comprender tus fortalezas y áreas de mejora.</p>
+
+                    <div class="flex items-stretch">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17v-5h1.5a1.5 1.5 0 1 1 0 3H5m12 2v-5h2m-2 3h2M5 10V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1v6M5 19v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1M10 3v4a1 1 0 0 1-1 1H5m6 4v5h1.375A1.627 1.627 0 0 0 14 15.375v-1.75A1.627 1.627 0 0 0 12.375 12H11Z"/>
+                          </svg>
+                          
+                        <p class="mb-4 ml-4 text-lg font-normal text-gray-500 dark:text-gray-400">Podras descargar tus reportes en formato (PDF) para tener claro en todo momento en que debes mejorar.</p>
+                    </div>
+                   
                     <table class="w-full text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400">
                         @if (session('success'))   
                             <div class="bg-transparent text-left py-4 lg:px-4">

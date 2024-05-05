@@ -23,5 +23,6 @@ class CategoryLevel extends Model{
     
         return $this->hasMany(Subcategory::class);
     }
+    
 
 }

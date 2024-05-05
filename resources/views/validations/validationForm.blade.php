@@ -10,7 +10,18 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                             <form action=" {{ route('validation.recibir') }}" method="POST">
-
+                                <div class="mb-4">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Completo: </label>
+                                    <input type="text" name="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Materia que esta cursando: </label>
+                                    <input type="text" name="curso" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Codigo estudiantil: </label>
+                                    <input type="text" name="codigo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+                                </div>
                                 {{ csrf_field() }}
 
                                 @foreach ($catVal as $category)
@@ -18,12 +29,13 @@
                                     @foreach ($category->validationQuestions as $quest)
                                         <label for="pregunta1" class="block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $quest->description }}</label>
                                         <select required id="{{ $quest->id }}" name="{{ $quest->id}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        
-                                            <option value="0">Totalmente en desacuerdo</option>
-                                            <option value="25">En desacuerdo</option>
-                                            <option value="50">Ni de acuerdo ni en desacuerdo </option>
-                                            <option value="75">De acuerdo </option>
+                                            {{-- <option selected value="">Seleccione una opcion</option>  --}}
                                             <option value="100">Totalmente de acuerdo</option>
+                                            <option value="75">De acuerdo </option>
+                                            <option value="50">Ni de acuerdo ni en desacuerdo </option>
+                                            <option value="25">En desacuerdo</option>
+                                            <option value="0">Totalmente en desacuerdo</option>
+                                            
                                         </select>
                             
                                     @endforeach

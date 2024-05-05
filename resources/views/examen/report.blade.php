@@ -16,12 +16,12 @@
                     {{-- <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400 mt-4">Escoja el nivel que desea ser calificado (A1, A2, B1, B2, C1, C2)  </p>
                     <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">Para medir sus conocimientos en el nivel se calificaran 3 categorias (READING, SPEAKING, LISTENING)</p>
                     <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem doloribus ullam at aliquid veniam sint sunt recusandae, eveniet porro quod fugiat dolores mollitia id ad, eaque vero! Placeat, velit veniam.</p> --}}
-            <div class=" flex justify-around">
+            <div class=" flex justify-between">
                     <button type="button" class="mt-3 px-3 py-2 text-sm font-medium text-center text-yellow-500 hover:text-white bg-yellow-500 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-transparent dark:hover:bg-yellow-500 dark:focus:ring-yellow-600 border border-yellow-500">
                         <a href="{{ route('report.pdf', ['report' => $report->id]) }}">Guardar Reporte (PDF)</a>
                     </button>
                     <button type="button" class="mt-3 px-3 py-2 text-sm font-medium text-center text-yellow-500 hover:text-white bg-yellow-500 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-transparent dark:hover:bg-yellow-500 dark:focus:ring-yellow-600 border border-yellow-500">
-                        <a href="{{ route('report.index') }}">Volver a lista de enunciados</a>
+                        <a href="{{ route('report.index') }}">Volver a lista de reportes</a>
                     </button>
                 </div>
 

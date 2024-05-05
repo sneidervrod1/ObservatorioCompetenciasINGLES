@@ -25,11 +25,12 @@
                         <thead>
                             <tr>
                                 <th class="px-4 py-2 text-center">Nombre</th>
-                                <th class="px-4 py-2 text-center">Correo</th>
-                                <th class="px-4 py-2 text-center">Percepción usabilidad</th>
-                                <th class="px-4 py-2 text-center">Percepción del modelo</th>
-                                <th class="px-4 py-2 text-center">Percepción de utilidad</th>
-                                <th class="px-4 py-2 text-center">Satisfacción general de la aplicación</th>
+                                <th class="px-4 py-2 text-center">Curso</th>
+                                <th class="px-4 py-2 text-center">Codigo</th>
+                                <th class="px-4 py-2 text-center">Utilidad Percibida</th>
+                                <th class="px-4 py-2 text-center">Facilidad De Uso Percibida</th>
+                                <th class="px-4 py-2 text-center">Actitud Por El Uso</th>
+                                <th class="px-4 py-2 text-center">Intencion De Uso</th>
                                 <th class="px-4 py-2 text-center">Total Aceptación</th>
                             </tr>
                         </thead>
@@ -38,12 +39,13 @@
                             @foreach ($validations as $validation)
                             
                                 <tr class="border-b">
-                                    <td class="px-4 py-2 text-center">{{ $validation->name }}</td>
-                                    <td class="px-4 py-2 text-center">{{ $validation->email }}</td>
-                                    <td class="px-4 py-2 text-center">{{ $validation->percepUsabilidad }}</td>
-                                    <td class="px-4 py-2 text-center">{{ $validation->modeloCompIngles }}</td>
-                                    <td class="px-4 py-2 text-center">{{ $validation->percepUtilidad }}</td>
-                                    <td class="px-4 py-2 text-center">{{ $validation->satisfaccionApp }}</td>
+                                    <td class="px-4 py-2 text-center">{{ $validation->nombre }}</td>
+                                    <td class="px-4 py-2 text-center">{{ $validation->curso }}</td>
+                                    <td class="px-4 py-2 text-center">{{ $validation->codigo }}</td>
+                                    <td class="px-4 py-2 text-center">{{ $validation->UtilidadPercibida }}</td>
+                                    <td class="px-4 py-2 text-center">{{ $validation->modeloCFacilidadDeUsoPercibida }}</td>
+                                    <td class="px-4 py-2 text-center">{{ $validation->ActitudPorElUso }}</td>
+                                    <td class="px-4 py-2 text-center">{{ $validation->IntencionDeUso }}</td>
                                     <td class="px-4 py-2 text-center">{{ $validation->totalAceptacion }}</td>
                                 </tr>
                                

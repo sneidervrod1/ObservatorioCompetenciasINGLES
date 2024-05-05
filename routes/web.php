@@ -24,10 +24,8 @@ use App\Models\Level;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/modelo', function () {
-    $catLevel = CategoryLevel::all();
-    return view('modelo/modelo', compact('catLevel'));
-});
+
+Route::get('/modelo', [ModeloController::class, 'mostrarmodelo'])->name('modelo');
 
 Route::middleware('can:validation.crud')->group( function () {
     Route::get('/validation/lista', [ValidationController::class, 'listaCategorias'])->name('validation.lista');

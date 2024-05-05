@@ -40,16 +40,19 @@ class ValidationController extends Controller
         foreach ($respuestasEnviadas as $key => $value) {
                 $idPregunta = (int)$key;
                 $valor = (int)$value;
-                $peso = ValidationQuestion::find($idPregunta)->value('weight_validation_question'); 
+                $peso = ValidationQuestion::where('id', $idPregunta)->value('weight_validation_question'); 
                 $X = ValidationQuestion::where('id', $idPregunta)->value('validation_category_id');  // Suponiendo que 'peso' es el nombre de la columna
-                $resultadoMultiplicacion = $valor * (0.01) *$peso;
+                $resultadoMultiplicacion = $valor * (0.01) * $peso;
               
                 $resultados[$idPregunta] = [
                     'id' => $idPregunta,
+                   
                     'valorPorcentual' => $resultadoMultiplicacion,
                     'validation_category_id' => $X,             
                 ];
         }
+        // return $resultados;
+
         foreach ($resultados as $resultado) {
             $categoriaId = $resultado['validation_category_id'];
             $valorPorcentual = $resultado['valorPorcentual'];   
@@ -58,18 +61,51 @@ class ValidationController extends Controller
             }
             $sumasPorCategoria[$categoriaId] += $valorPorcentual;
         }
+        $pu = 0;
+        $peou = 0;
+        $au = 0;
+        $iu = 0;
 
+        foreach ($sumasPorCategoria as $key => $value) {
+            if ($key == "1") {
+                $pu = $value;
+            }
+            if ($key == "2") {
+                $peou = $value;
+            }
+            if ($key == "3") {
+                $au = $value;
+            }
+            if ($key == "4") {
+                $iu = $value;
+            }
+        }
         $sum =0;
 
         foreach ($sumasPorCategoria as $key => $value) {
             $idCategory= (int)$key;
             $valor = (int)$value;
-            $peso = ValidationCategory::find($idCategory)->value('weight_validation_category'); 
+            $peso = ValidationCategory::where('id', $idCategory)->value('weight_validation_category'); 
         
             $resultadoMultiplicacion = $valor * (0.01) * $peso;
             $sum += $resultadoMultiplicacion;
         }
-        return $sum;
+      
+
+        $validacion = new Validation;
+        $validacion->user = auth()->id();
+
+        $validacion->nombre = $request->nombre;
+        $validacion->curso = $request->curso;
+        $validacion->codigo  = $request->codigo;
+        $validacion->UtilidadPercibida = $pu;
+        $validacion->modeloCFacilidadDeUsoPercibida = $peou;
+        $validacion->ActitudPorElUso = $au;
+        $validacion->IntencionDeUso = $iu;
+        $validacion->totalAceptacion = $sum;
+        $validacion->save();
+     
+        return redirect()->route('validation.mostrar');
     }
 
     // NUEVO 
