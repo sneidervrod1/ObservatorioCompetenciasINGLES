@@ -12,6 +12,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191); 
         Paginator::useTailwind();
+
+        if ($this->app->environment('production')){
+            \URL::forceScheme('htpps');
+
+        }
     }
 
 
