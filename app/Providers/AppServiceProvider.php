@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useTailwind();
 
         if ($this->app->environment('production')){
-            \URL::forceScheme('htpps');
+            \URL::forceScheme('https');
 
         }
     }
