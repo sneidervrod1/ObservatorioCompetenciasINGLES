@@ -95,3 +95,45 @@
  
 </x-app-layout>
 
+{{-- <script>
+    let tiempoRestante = localStorage.getItem('tiempoRestante') ? parseInt(localStorage.getItem('tiempoRestante')) : 1.5 * 60 * 60; // 1.5 horas en segundos
+
+    let fechaCierre = new Date(new Date().getTime() + (tiempoRestante * 1000)); // Fecha de cierre basada en el tiempo restante
+
+    const timerElemento = document.getElementById('timer');
+
+    const actualizarTimer = () => {
+        tiempoRestante = Math.max(0, Math.floor((fechaCierre - new Date()) / 1000)); // Actualizar el tiempo restante
+
+        localStorage.setItem('tiempoRestante', tiempoRestante); // Guardar el tiempo restante en localStorage
+
+        if (tiempoRestante <= 0) {
+            clearInterval(intervalo);
+            document.getElementById('formulario').submit(); // Envía el formulario automáticamente al finalizar el tiempo
+            timerElemento.textContent = "El formulario está cerrado";
+            document.getElementById('formulario').style.display = 'none'; // Opcional: oculta el formulario
+        } else {
+            const horas = Math.floor(tiempoRestante / 3600);
+            const minutos = Math.floor((tiempoRestante % 3600) / 60);
+            const segundos = tiempoRestante % 60;
+
+            timerElemento.textContent = `El formulario se cerrará en: ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+        }
+    };
+
+    const intervalo = setInterval(actualizarTimer, 1000); // Actualizar el timer cada segundo
+
+    // Actualizar el timer al cargar la página
+    actualizarTimer();
+
+    
+    const reiniciarTiempo = () => {
+        tiempoRestante = 1.5 * 60 * 60; // Reiniciar el tiempo a 1.5 horas (5400 segundos)
+        localStorage.setItem('tiempoRestante', tiempoRestante); // Guardar el nuevo tiempo restante en localStorage
+        fechaCierre = new Date(new Date().getTime() + (tiempoRestante * 1000)); // Actualizar la fecha de cierre basada en el nuevo tiempo restante
+    };
+
+    document.getElementById('formulario').addEventListener('submit', function(event) {
+        reiniciarTiempo(); // Reiniciar el tiempo
+    });
+</script> --}}
