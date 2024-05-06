@@ -9,11 +9,11 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100  font-mono">
                     <div class="container mx-auto p-4">
-                        <div class="border-2 border-red-500 rounded p-4">
+                        {{-- <div class="border-2 border-red-500 rounded p-4">
                             <h1 class="text-2xl font-semibold mb-4 ">Contador</h1>
                             <p class="mb-4">El contador se enviará automáticamente al llegar a cero.</p>
                             <p id="timer">El formulario se cerrará en:</p>
-                        </div>
+                        </div> --}}
                         <div class="flex items-center">
                             <form id="formulario" action="{{ route('examen.save', ['level' => $level] ) }}" method="POST">
                                 @csrf
