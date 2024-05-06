@@ -95,7 +95,7 @@
  
 </x-app-layout>
 
-{{-- <script>
+<script>
     let tiempoRestante = localStorage.getItem('tiempoRestante') ? parseInt(localStorage.getItem('tiempoRestante')) : 1.5 * 60 * 60; // 1.5 horas en segundos
 
     let fechaCierre = new Date(new Date().getTime() + (tiempoRestante * 1000)); // Fecha de cierre basada en el tiempo restante
@@ -136,4 +136,4 @@
     document.getElementById('formulario').addEventListener('submit', function(event) {
         reiniciarTiempo(); // Reiniciar el tiempo
     });
-</script> --}}
+</script>
