@@ -183,17 +183,18 @@ class ExamenController extends Controller
         
             // return $categoryLevel;
             $user = auth()->id();
-            $report = new Report;
-            $report->total = $sumafinal;
-            $report->level = $level;
-            $report->user = $user;
-            $report->writting = $writting;
-            $report->listening = $listening;
-            $report->reading = $reading;
-            $report->subcategorias = $statementsAEstudiar;
-            $report->save();
+            return $user;
+            // $report = new Report;
+            // $report->total = $sumafinal;
+            // $report->level = $level;
+            // $report->user = $user;
+            // $report->writting = $writting;
+            // $report->listening = $listening;
+            // $report->reading = $reading;
+            // $report->subcategorias = $statementsAEstudiar;
+            // $report->save();
         
-            return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');
+            // return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');
     }
     public function confirmation(){
     return view('examen.confirmacion'); // Asume que tienes una vista llamada "examen/confirmation.blade.php"
