@@ -86,7 +86,7 @@ Route::middleware('can:encuesta')->group( function () {                         
     Route::put('/questions/actualizarPesoSub/{statement}', [QuestionController::class, 'actualizarPesoSub'])->name('questions.actPeso'); // ACT PESO SUBCATEGORIAS
     Route::delete('/questions/delete/{question}',[QuestionController::class, 'delete'])->name('questions.delete');
 }); 
-Route::middleware('can:examen')->group(function () {    
+Route::middleware(['auth', 'can:examen'])->group(function () {    
     Route::get('/examen', [ExamenController::class, 'ver'])->name('examen.index');
     Route::post('/examen/realizar', [ExamenController::class, 'realizar'])->name('examen.realizar');
     Route::post('/examen/save', [ExamenController::class, 'save'])->name('examen.save');

@@ -40,161 +40,161 @@ class ExamenController extends Controller
 
         
 
-    //     $preguntas = Question::whereIn('id', array_keys($request->except('_token')))
-    //         ->get(['id', 'correctAnswer', 'weightQuestions', 'statement_id'])
-    //         ->keyBy('id')
-    //         ->toArray();
+        $preguntas = Question::whereIn('id', array_keys($request->except('_token')))
+            ->get(['id', 'correctAnswer', 'weightQuestions', 'statement_id'])
+            ->keyBy('id')
+            ->toArray();
 
-    //     // Extraer las respuestas enviadas en el formulario
-    //     $respuestasEnviadas = $request->except('_token');
+        // Extraer las respuestas enviadas en el formulario
+        $respuestasEnviadas = $request->except('_token');
 
-    //     // Filtrar las preguntas donde la respuesta es correcta
-    //     $preguntasResultado = collect($preguntas)->map(function ($pregunta) use ($respuestasEnviadas) {
-    //         $preguntaId = $pregunta['id'];
+        // Filtrar las preguntas donde la respuesta es correcta
+        $preguntasResultado = collect($preguntas)->map(function ($pregunta) use ($respuestasEnviadas) {
+            $preguntaId = $pregunta['id'];
 
-    //         if (isset($respuestasEnviadas[$preguntaId])) {
-    //             return [
-    //                 'statement_id' => $pregunta['statement_id'],
-    //                 'peso' => $pregunta['correctAnswer'] === $respuestasEnviadas[$preguntaId] ? $pregunta['weightQuestions'] : 0
-    //             ];
-    //         }
+            if (isset($respuestasEnviadas[$preguntaId])) {
+                return [
+                    'statement_id' => $pregunta['statement_id'],
+                    'peso' => $pregunta['correctAnswer'] === $respuestasEnviadas[$preguntaId] ? $pregunta['weightQuestions'] : 0
+                ];
+            }
 
-    //         return [
+            return [
                 
-    //             'resultado' => 0
-    //         ];
-    //     })->toArray();
+                'resultado' => 0
+            ];
+        })->toArray();
 
        
         
-    //     $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
-    //         ->map(function ($group) {
-    //             return $group->sum('peso');
-    //         })
-    //         ->toArray();
+        $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
+            ->map(function ($group) {
+                return $group->sum('peso');
+            })
+            ->toArray();
 
-    //     $statementIds = array_keys($sumaPorStatement);
+        $statementIds = array_keys($sumaPorStatement);
 
-    //     $statements = Statement::whereIn('id', $statementIds)
-    //         ->get(['id', 'subcategory_id'])
-    //         ->keyBy('id')
-    //         ->toArray();
+        $statements = Statement::whereIn('id', $statementIds)
+            ->get(['id', 'subcategory_id'])
+            ->keyBy('id')
+            ->toArray();
 
-    //     $subcategories = Subcategory::whereIn('id', array_unique(array_column($statements, 'subcategory_id')))
-    //         ->get()
-    //         ->keyBy('id');
+        $subcategories = Subcategory::whereIn('id', array_unique(array_column($statements, 'subcategory_id')))
+            ->get()
+            ->keyBy('id');
 
-    //     $result = [];
+        $result = [];
 
-    //     foreach ($statements as $statementId => $statement) {
-    //         $subcategoryId = $statement['subcategory_id'];
+        foreach ($statements as $statementId => $statement) {
+            $subcategoryId = $statement['subcategory_id'];
 
-    //         $sub = $subcategories->get($subcategoryId);
+            $sub = $subcategories->get($subcategoryId);
 
-    //         if ($sub) {
-    //             $totalWeight = isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] * (0.01) * $sub->weight_subcategory : 0;
+            if ($sub) {
+                $totalWeight = isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] * (0.01) * $sub->weight_subcategory : 0;
 
-    //             $result[$subcategoryId] = [
-    //                 'id' => $statement['id'],
-    //                 'subcategory_id' => $subcategoryId,
-    //                 'SumPreguntas' => isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] : 0,
-    //                 'TotalWeight' => $totalWeight,
-    //                 'categoryLevel_id' => $sub->category_level_id
-    //             ];
-    //         }
-    //     }
+                $result[$subcategoryId] = [
+                    'id' => $statement['id'],
+                    'subcategory_id' => $subcategoryId,
+                    'SumPreguntas' => isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] : 0,
+                    'TotalWeight' => $totalWeight,
+                    'categoryLevel_id' => $sub->category_level_id
+                ];
+            }
+        }
 
-    //     //  return $result;
+        //  return $result;
 
-    //     $statementsAEstudiar = '';
+        $statementsAEstudiar = '';
 
-    //     foreach ($result as $item) {
-    //         if ($item['SumPreguntas'] != 100) {
-    //             $statementsAEstudiar .= $item['subcategory_id'] . ',';
-    //         }
-    //     }
-    //     $statementsAEstudiar = rtrim($statementsAEstudiar, ',');
-    //     // return $statementsAEstudiar;
+        foreach ($result as $item) {
+            if ($item['SumPreguntas'] != 100) {
+                $statementsAEstudiar .= $item['subcategory_id'] . ',';
+            }
+        }
+        $statementsAEstudiar = rtrim($statementsAEstudiar, ',');
+        // return $statementsAEstudiar;
 
-    //     // Suponiendo que $result es el array que proporcionaste anteriormente
+        // Suponiendo que $result es el array que proporcionaste anteriormente
 
-    //     // Crear un nuevo array para almacenar las sumas de TotalWeight
-    //     $sumByCategoryLevel = [];
+        // Crear un nuevo array para almacenar las sumas de TotalWeight
+        $sumByCategoryLevel = [];
 
-    //     foreach ($result as $statement) {
-    //         $categoryLevelId = $statement['categoryLevel_id'];
+        foreach ($result as $statement) {
+            $categoryLevelId = $statement['categoryLevel_id'];
 
-    //         if (isset($sumByCategoryLevel[$categoryLevelId])) {
-    //             $sumByCategoryLevel[$categoryLevelId] += $statement['TotalWeight'];
-    //         } else {
-    //             $sumByCategoryLevel[$categoryLevelId] = $statement['TotalWeight'];
-    //         }
-    //     }
+            if (isset($sumByCategoryLevel[$categoryLevelId])) {
+                $sumByCategoryLevel[$categoryLevelId] += $statement['TotalWeight'];
+            } else {
+                $sumByCategoryLevel[$categoryLevelId] = $statement['TotalWeight'];
+            }
+        }
 
-    // //   return $sumByCategoryLevel;
-    //     $writting = 0;
-    //     $listening = 0;
-    //     $reading = 0;
-    //     foreach ($sumByCategoryLevel as $id => $value) {
-    //         $catLevel = CategoryLevel::where('id', $id )->get('category_id');
+    //   return $sumByCategoryLevel;
+        $writting = 0;
+        $listening = 0;
+        $reading = 0;
+        foreach ($sumByCategoryLevel as $id => $value) {
+            $catLevel = CategoryLevel::where('id', $id )->get('category_id');
         
-    //         $data = json_decode($catLevel, true);
-    //         $levelId = $data[0]['category_id'];
-    //         if ($levelId == 3) {
-    //             $writting = $value;
+            $data = json_decode($catLevel, true);
+            $levelId = $data[0]['category_id'];
+            if ($levelId == 3) {
+                $writting = $value;
                 
-    //         }
-    //          if ($levelId == 2) {
-    //             $listening = $value;
-    //         }
-    //         if ($levelId == 1) {
-    //             $reading = $value;
-    //         }
+            }
+             if ($levelId == 2) {
+                $listening = $value;
+            }
+            if ($levelId == 1) {
+                $reading = $value;
+            }
             
             
-    //     }
+        }
 
-    //         $uniqueCatLevelIds = array_unique(array_keys($sumByCategoryLevel));
-    //         // return $uniqueCatLevelIds;
+            $uniqueCatLevelIds = array_unique(array_keys($sumByCategoryLevel));
+            // return $uniqueCatLevelIds;
 
-    //         $categoryLevel = categoryLevel::whereIn('id', $uniqueCatLevelIds)
-    //             ->get()
-    //             ->keyBy('id')
-    //             ->toArray();
+            $categoryLevel = categoryLevel::whereIn('id', $uniqueCatLevelIds)
+                ->get()
+                ->keyBy('id')
+                ->toArray();
 
-    //         // Suponiendo que $categorLevel y $sumByCategoryLevel son los arrays que proporcionaste
-    //         $level = 0;
-    //         foreach ($categoryLevel as $categoryId => &$category) {
-    //             $categoriesIds = $category['id'];
+            // Suponiendo que $categorLevel y $sumByCategoryLevel son los arrays que proporcionaste
+            $level = 0;
+            foreach ($categoryLevel as $categoryId => &$category) {
+                $categoriesIds = $category['id'];
 
-    //             if (isset($sumByCategoryLevel[$categoriesIds])) {
-    //                 $category['weight_category'] *= (0.01) * $sumByCategoryLevel[$categoriesIds];
-    //             } else {
-    //                 $category['weight_category'] = 0;
-    //             }
-    //             $level = $category['level_id'];
-    //         }
-    //         // return $categoryLevel;
+                if (isset($sumByCategoryLevel[$categoriesIds])) {
+                    $category['weight_category'] *= (0.01) * $sumByCategoryLevel[$categoriesIds];
+                } else {
+                    $category['weight_category'] = 0;
+                }
+                $level = $category['level_id'];
+            }
+            // return $categoryLevel;
           
-    //         $sumafinal =0;
-    //         foreach ($categoryLevel as $categoryId => &$category) {
-    //             $sumafinal += $category['weight_category'];
-    //         }
+            $sumafinal =0;
+            foreach ($categoryLevel as $categoryId => &$category) {
+                $sumafinal += $category['weight_category'];
+            }
         
             // return $categoryLevel;
             $user = auth()->id();
-            return $user;
-            // $report = new Report;
-            // $report->total = $sumafinal;
-            // $report->level = $level;
-            // $report->user = $user;
-            // $report->writting = $writting;
-            // $report->listening = $listening;
-            // $report->reading = $reading;
-            // $report->subcategorias = $statementsAEstudiar;
-            // $report->save();
+           
+            $report = new Report;
+            $report->total = $sumafinal;
+            $report->level = $level;
+            $report->user = $user;
+            $report->writting = $writting;
+            $report->listening = $listening;
+            $report->reading = $reading;
+            $report->subcategorias = $statementsAEstudiar;
+            $report->save();
         
-            // return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');
+            return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');
     }
     public function confirmation(){
     return view('examen.confirmacion'); // Asume que tienes una vista llamada "examen/confirmation.blade.php"
