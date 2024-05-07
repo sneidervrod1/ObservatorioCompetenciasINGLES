@@ -125,51 +125,51 @@ class ExamenController extends Controller
         $writting = 0;
         $listening = 0;
         $reading = 0;
-        // foreach ($sumByCategoryLevel as $id => $value) {
-        //     $catLevel = CategoryLevel::where('id', $id )->get('category_id');
+        foreach ($sumByCategoryLevel as $id => $value) {
+            $catLevel = CategoryLevel::where('id', $id )->get('category_id');
         
-        //     $data = json_decode($catLevel, true);
-        //     $levelId = $data[0]['category_id'];
-        //     if ($levelId == 3) {
-        //         $writting = $value;
+            $data = json_decode($catLevel, true);
+            $levelId = $data[0]['category_id'];
+            if ($levelId == 3) {
+                $writting = $value;
                 
-        //     }
-        //      if ($levelId == 2) {
-        //         $listening = $value;
-        //     }
-        //     if ($levelId == 1) {
-        //         $reading = $value;
-        //     }
+            }
+             if ($levelId == 2) {
+                $listening = $value;
+            }
+            if ($levelId == 1) {
+                $reading = $value;
+            }
             
             
-        // }
+        }
 
-        //     $uniqueCatLevelIds = array_unique(array_keys($sumByCategoryLevel));
-        //     // return $uniqueCatLevelIds;
+            $uniqueCatLevelIds = array_unique(array_keys($sumByCategoryLevel));
+            // return $uniqueCatLevelIds;
 
-        //     $categoryLevel = categoryLevel::whereIn('id', $uniqueCatLevelIds)
-        //         ->get()
-        //         ->keyBy('id')
-        //         ->toArray();
+            $categoryLevel = categoryLevel::whereIn('id', $uniqueCatLevelIds)
+                ->get()
+                ->keyBy('id')
+                ->toArray();
 
             // Suponiendo que $categorLevel y $sumByCategoryLevel son los arrays que proporcionaste
             $level = 0;
             $sumafinal =0;
-            // foreach ($categoryLevel as $categoryId => &$category) {
+            foreach ($categoryLevel as $categoryId => &$category) {
 
-            //     $sumafinal += $category['weight_category'];
+                $sumafinal += $category['weight_category'];
 
-            //     $categoriesIds = $category['id'];
+                $categoriesIds = $category['id'];
 
-            //     if (isset($sumByCategoryLevel[$categoriesIds])) {
-            //         $category['weight_category'] *= (0.01) * $sumByCategoryLevel[$categoriesIds];
-            //     } else {
-            //         $category['weight_category'] = 0;
-            //     }
-            //     $level = $category['level_id'];
-            // }
-            // return $categoryLevel; 
-            // return $categoryLevel;
+                if (isset($sumByCategoryLevel[$categoriesIds])) {
+                    $category['weight_category'] *= (0.01) * $sumByCategoryLevel[$categoriesIds];
+                } else {
+                    $category['weight_category'] = 0;
+                }
+                $level = $category['level_id'];
+            }
+            return $categoryLevel; 
+            return $categoryLevel;
             
             $report = new Report;
             $report->total = $sumafinal;
