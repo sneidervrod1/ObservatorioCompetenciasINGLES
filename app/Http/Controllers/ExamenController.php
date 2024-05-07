@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Response;
+
 
 use App\Models\CategoryLevel;
 use App\Models\Report;
@@ -193,7 +195,11 @@ class ExamenController extends Controller
             $report->reading = $reading;
             $report->subcategorias = $statementsAEstudiar;
             $report->save();
-        
+
+            $response = response('Hello World'); // Utilizar el método response()
+            $response->withCookie(cookie('__cf_bm', 'value', 60, '/', 'hammerhead-app-r7hev.ondigitalocean.app', true, true, false, 'None'));
+            
+            
             return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');
     }
     public function confirmation(){
