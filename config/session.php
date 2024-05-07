@@ -154,7 +154,8 @@ return [
     | available to in your application. A sensible default has been set.
     |
     */
-    'domain' => env('SESSION_DOMAIN', 'shalnei.online'),
+
+    'domain' => env('SESSION_DOMAIN'),
 
     /*
     |--------------------------------------------------------------------------
