@@ -181,7 +181,7 @@ class ExamenController extends Controller
             $report->subcategorias = $statementsAEstudiar;
             $report->save();
         
-            return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');
+            return route('examen.confirmation');
     }
     public function confirmation(){
     return view('examen.confirmacion'); // Asume que tienes una vista llamada "examen/confirmation.blade.php"
