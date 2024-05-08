@@ -50,7 +50,6 @@ class ExamenController extends Controller
         // Extraer las respuestas enviadas en el formulario
         $respuestasEnviadas = $request->except('_token');
 
-        // Filtrar las preguntas donde la respuesta es correcta
         $preguntasResultado = collect($preguntas)->map(function ($pregunta) use ($respuestasEnviadas) {
             $preguntaId = $pregunta['id'];
 
@@ -69,13 +68,13 @@ class ExamenController extends Controller
 
        
         
-        // $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
-        //     ->map(function ($group) {
-        //         return $group->sum('peso');
-        //     })
-        //     ->toArray();
+        $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
+            ->map(function ($group) {
+                return $group->sum('peso');
+            })
+            ->toArray();
 
-        // $statementIds = array_keys($sumaPorStatement);
+        $statementIds = array_keys($sumaPorStatement);
 
         // $statements = Statement::whereIn('id', $statementIds)
         //     ->get(['id', 'subcategory_id'])
@@ -86,48 +85,48 @@ class ExamenController extends Controller
         //     ->get()
         //     ->keyBy('id');
 
-    //     $result = [];
+        // $result = [];
 
-    //     foreach ($statements as $statementId => $statement) {
-    //         $subcategoryId = $statement['subcategory_id'];
+        // foreach ($statements as $statementId => $statement) {
+        //     $subcategoryId = $statement['subcategory_id'];
 
-    //         $sub = $subcategories->get($subcategoryId);
+        //     $sub = $subcategories->get($subcategoryId);
 
-    //         if ($sub) {
-    //             $totalWeight = isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] * (0.01) * $sub->weight_subcategory : 0;
+        //     if ($sub) {
+        //         $totalWeight = isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] * (0.01) * $sub->weight_subcategory : 0;
 
-    //             $result[$subcategoryId] = [
-    //                 'id' => $statement['id'],
-    //                 'subcategory_id' => $subcategoryId,
-    //                 'SumPreguntas' => isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] : 0,
-    //                 'TotalWeight' => $totalWeight,
-    //                 'categoryLevel_id' => $sub->category_level_id
-    //             ];
-    //         }
-    //     }
+        //         $result[$subcategoryId] = [
+        //             'id' => $statement['id'],
+        //             'subcategory_id' => $subcategoryId,
+        //             'SumPreguntas' => isset($sumaPorStatement[$statementId]) ? $sumaPorStatement[$statementId] : 0,
+        //             'TotalWeight' => $totalWeight,
+        //             'categoryLevel_id' => $sub->category_level_id
+        //         ];
+        //     }
+        // }
 
   
 
-    //     $statementsAEstudiar = '';
+        // $statementsAEstudiar = '';
 
-    //     foreach ($result as $item) {
-    //         if ($item['SumPreguntas'] != 100) {
-    //             $statementsAEstudiar .= $item['subcategory_id'] . ',';
-    //         }
-    //     }
-    //     $statementsAEstudiar = rtrim($statementsAEstudiar, ',');
+        // foreach ($result as $item) {
+        //     if ($item['SumPreguntas'] != 100) {
+        //         $statementsAEstudiar .= $item['subcategory_id'] . ',';
+        //     }
+        // }
+        // $statementsAEstudiar = rtrim($statementsAEstudiar, ',');
      
-    //     $sumByCategoryLevel = [];
+        // $sumByCategoryLevel = [];
 
-    //     foreach ($result as $statement) {
-    //         $categoryLevelId = $statement['categoryLevel_id'];
+        // foreach ($result as $statement) {
+        //     $categoryLevelId = $statement['categoryLevel_id'];
 
-    //         if (isset($sumByCategoryLevel[$categoryLevelId])) {
-    //             $sumByCategoryLevel[$categoryLevelId] += $statement['TotalWeight'];
-    //         } else {
-    //             $sumByCategoryLevel[$categoryLevelId] = $statement['TotalWeight'];
-    //         }
-    //     }
+        //     if (isset($sumByCategoryLevel[$categoryLevelId])) {
+        //         $sumByCategoryLevel[$categoryLevelId] += $statement['TotalWeight'];
+        //     } else {
+        //         $sumByCategoryLevel[$categoryLevelId] = $statement['TotalWeight'];
+        //     }
+        // }
 
     // //   return $sumByCategoryLevel;
     //     $writting = 0;
