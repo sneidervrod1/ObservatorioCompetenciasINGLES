@@ -42,49 +42,49 @@ class ExamenController extends Controller
 
         
 
-    //     $preguntas = Question::whereIn('id', array_keys($request->except('_token')))
-    //         ->get(['id', 'correctAnswer', 'weightQuestions', 'statement_id'])
-    //         ->keyBy('id')
-    //         ->toArray();
+        $preguntas = Question::whereIn('id', array_keys($request->except('_token')))
+            ->get(['id', 'correctAnswer', 'weightQuestions', 'statement_id'])
+            ->keyBy('id')
+            ->toArray();
 
-    //     // Extraer las respuestas enviadas en el formulario
-    //     $respuestasEnviadas = $request->except('_token');
+        // Extraer las respuestas enviadas en el formulario
+        $respuestasEnviadas = $request->except('_token');
 
-    //     // Filtrar las preguntas donde la respuesta es correcta
-    //     $preguntasResultado = collect($preguntas)->map(function ($pregunta) use ($respuestasEnviadas) {
-    //         $preguntaId = $pregunta['id'];
+        // Filtrar las preguntas donde la respuesta es correcta
+        $preguntasResultado = collect($preguntas)->map(function ($pregunta) use ($respuestasEnviadas) {
+            $preguntaId = $pregunta['id'];
 
-    //         if (isset($respuestasEnviadas[$preguntaId])) {
-    //             return [
-    //                 'statement_id' => $pregunta['statement_id'],
-    //                 'peso' => $pregunta['correctAnswer'] === $respuestasEnviadas[$preguntaId] ? $pregunta['weightQuestions'] : 0
-    //             ];
-    //         }
+            if (isset($respuestasEnviadas[$preguntaId])) {
+                return [
+                    'statement_id' => $pregunta['statement_id'],
+                    'peso' => $pregunta['correctAnswer'] === $respuestasEnviadas[$preguntaId] ? $pregunta['weightQuestions'] : 0
+                ];
+            }
 
-    //         return [
+            return [
                 
-    //             'resultado' => 0
-    //         ];
-    //     })->toArray();
+                'resultado' => 0
+            ];
+        })->toArray();
 
        
         
-    //     $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
-    //         ->map(function ($group) {
-    //             return $group->sum('peso');
-    //         })
-    //         ->toArray();
+        $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
+            ->map(function ($group) {
+                return $group->sum('peso');
+            })
+            ->toArray();
 
-    //     $statementIds = array_keys($sumaPorStatement);
+        $statementIds = array_keys($sumaPorStatement);
 
-    //     $statements = Statement::whereIn('id', $statementIds)
-    //         ->get(['id', 'subcategory_id'])
-    //         ->keyBy('id')
-    //         ->toArray();
+        $statements = Statement::whereIn('id', $statementIds)
+            ->get(['id', 'subcategory_id'])
+            ->keyBy('id')
+            ->toArray();
 
-    //     $subcategories = Subcategory::whereIn('id', array_unique(array_column($statements, 'subcategory_id')))
-    //         ->get()
-    //         ->keyBy('id');
+        $subcategories = Subcategory::whereIn('id', array_unique(array_column($statements, 'subcategory_id')))
+            ->get()
+            ->keyBy('id');
 
     //     $result = [];
 
