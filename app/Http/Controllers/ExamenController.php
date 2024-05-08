@@ -199,7 +199,7 @@ class ExamenController extends Controller
                 $report->writting = 50;
                 $report->listening = 50;
                 $report->reading = 50;
-                $report->subcategorias = "asdas , asdasdas , asdasdas";
+                $report->subcategorias = "1 , 2 , 3";
                 $report->save();
             
             return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');
