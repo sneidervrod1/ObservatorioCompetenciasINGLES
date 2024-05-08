@@ -69,22 +69,22 @@ class ExamenController extends Controller
 
        
         
-        $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
-            ->map(function ($group) {
-                return $group->sum('peso');
-            })
-            ->toArray();
+        // $sumaPorStatement = collect($preguntasResultado)->groupBy('statement_id')
+        //     ->map(function ($group) {
+        //         return $group->sum('peso');
+        //     })
+        //     ->toArray();
 
-        $statementIds = array_keys($sumaPorStatement);
+        // $statementIds = array_keys($sumaPorStatement);
 
-        $statements = Statement::whereIn('id', $statementIds)
-            ->get(['id', 'subcategory_id'])
-            ->keyBy('id')
-            ->toArray();
+        // $statements = Statement::whereIn('id', $statementIds)
+        //     ->get(['id', 'subcategory_id'])
+        //     ->keyBy('id')
+        //     ->toArray();
 
-        $subcategories = Subcategory::whereIn('id', array_unique(array_column($statements, 'subcategory_id')))
-            ->get()
-            ->keyBy('id');
+        // $subcategories = Subcategory::whereIn('id', array_unique(array_column($statements, 'subcategory_id')))
+        //     ->get()
+        //     ->keyBy('id');
 
     //     $result = [];
 
