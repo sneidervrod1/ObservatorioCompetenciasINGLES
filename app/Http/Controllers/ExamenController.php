@@ -80,7 +80,9 @@ class ExamenController extends Controller
                 }
             }
                
-        }        
+        }    
+        $statementsAEstudiar = rtrim($statementsAEstudiar, ',');
+        // return $statementsAEstudiar;    
         // return $totalWithSubcategories;
         //return $statementsAEstudiar;
         // HASTA ACA FUNCIONA EN PRODUCCION
@@ -119,8 +121,8 @@ class ExamenController extends Controller
         $report->reading = $reading;
         $report->subcategorias = $statementsAEstudiar;
         $report->save();
-       
-         return redirect()->route('examen.confirmation');     
+        // return $statementsAEstudiar;
+        return redirect()->route('examen.confirmation');     
     }
         
   
