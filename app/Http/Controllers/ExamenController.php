@@ -62,6 +62,8 @@ class ExamenController extends Controller
         })->toArray();
 
         //  return $sumaPorStatement;
+        $statementsAEstudiar = '';
+
         $totalWithSubcategories = [];
         foreach ($sumaPorStatement as $statement_id => $sumWeight) {
             $subcategory_id = Statement::where('id', $statement_id)->value('subcategory_id');
@@ -70,13 +72,52 @@ class ExamenController extends Controller
                 $totalWithSubcategories[] = [
                     'subcategory_id' => $subcategory_id,
                     'category_level_id' => $subcategory->category_level_id,
-                    'weighted_sum' => $subcategory->weight_subcategory * 0.01 * $sumWeight
+                    'weighted_sum' => $subcategory->weight_subcategory * 0.01 * $sumWeight,
+
                 ];
+                if ($sumWeight != 100) {
+                    $statementsAEstudiar .= $subcategory_id . ',';
+                }
             }
                
         }        
-        return $totalWithSubcategories;
+        // return $totalWithSubcategories;
+        //return $statementsAEstudiar;
+        // HASTA ACA FUNCIONA EN PRODUCCION
+        $sumaPorSubcategoria = collect($totalWithSubcategories)->groupBy('category_level_id')
+        ->map(function ($group) {
+            return $group->sum('weighted_sum');
+        })->toArray();
 
+        // return $sumaPorSubcategoria;
+        $suma=0;
+        $writting=0;
+        $reading=0;
+        $listening=0;
+        $totalWithcategories = [];
+        foreach ($sumaPorSubcategoria as $categoryLevel_id => $sumWeight) {
+            $category_id = CategoryLevel::where('id', $categoryLevel_id)->value('category_id');
+            $weight_category = CategoryLevel::where('id', $categoryLevel_id)->value('weight_category');
+                if($category_id === 1){
+                    $reading= $sumWeight;
+                }
+                if($category_id === 2){
+                    $listening= $sumWeight;
+                }
+                if($category_id === 3){
+                    $writting= $sumWeight;
+                }
+                $totalWithcategories[] = [
+                    'category_id' => $category_id,
+                    'CatSinPorcentaje' =>  $sumWeight,
+                    'weight_category' =>  $weight_category,
+                   
+                ]; 
+                
+                $suma += ($weight_category * 0.01 * $sumWeight);     
+        }     
+        return $suma;
+           
     }
         
   
