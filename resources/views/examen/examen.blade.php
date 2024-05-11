@@ -46,6 +46,7 @@
                     <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="nivel">
 
                         <option class="block mb-2 text-base font-medium text-gray-900 dark:text-white " value="A1" > A1</option>
+                        <option class="block mb-2 text-base font-medium text-gray-900 dark:text-white " value="A2" > A2</option>
                         <option class="block mb-2 text-base font-medium text-gray-900 dark:text-white " value="B1" > B1</option>
                         <option class="block mb-2 text-base font-medium text-gray-900 dark:text-white " value="B2" > B2</option>
 

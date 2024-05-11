@@ -94,7 +94,6 @@ class ExamenController extends Controller
         $writting=0;
         $reading=0;
         $listening=0;
-        $totalWithcategories = [];
         foreach ($sumaPorSubcategoria as $categoryLevel_id => $sumWeight) {
             $category_id = CategoryLevel::where('id', $categoryLevel_id)->value('category_id');
             $weight_category = CategoryLevel::where('id', $categoryLevel_id)->value('weight_category');
@@ -107,17 +106,19 @@ class ExamenController extends Controller
                 if($category_id === 3){
                     $writting= $sumWeight;
                 }
-                $totalWithcategories[] = [
-                    'category_id' => $category_id,
-                    'CatSinPorcentaje' =>  $sumWeight,
-                    'weight_category' =>  $weight_category,
-                   
-                ]; 
-                
                 $suma += ($weight_category * 0.01 * $sumWeight);     
         }     
-        return $suma;
-           
+        $report = new Report;
+        $report->total = $suma;
+        $report->level = $level;
+        $report->user = auth()->id();
+        $report->writting = $writting;
+        $report->listening = $listening;
+        $report->reading = $reading;
+        $report->subcategorias = $statementsAEstudiar;
+        $report->save();
+    
+        return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');     
     }
         
   
