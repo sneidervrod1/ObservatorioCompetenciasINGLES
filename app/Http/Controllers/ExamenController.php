@@ -40,7 +40,7 @@ class ExamenController extends Controller
     }
    
     public function save(Request $request, Level $level){
-
+       
         $count = count( $request->except('_token'));
    
 
@@ -90,6 +90,7 @@ class ExamenController extends Controller
         })->toArray();
 
         // return $sumaPorSubcategoria;
+        $levelSave=0;
         $suma=0;
         $writting=0;
         $reading=0;
@@ -97,6 +98,7 @@ class ExamenController extends Controller
         foreach ($sumaPorSubcategoria as $categoryLevel_id => $sumWeight) {
             $category_id = CategoryLevel::where('id', $categoryLevel_id)->value('category_id');
             $weight_category = CategoryLevel::where('id', $categoryLevel_id)->value('weight_category');
+            $levelSave= CategoryLevel::where('id', $categoryLevel_id)->value('level_id');;
                 if($category_id === 1){
                     $reading= $sumWeight;
                 }
@@ -110,15 +112,15 @@ class ExamenController extends Controller
         }     
         $report = new Report;
         $report->total = $suma;
-        $report->level = $level;
+        $report->level = $levelSave;
         $report->user = auth()->id();
         $report->writting = $writting;
         $report->listening = $listening;
         $report->reading = $reading;
         $report->subcategorias = $statementsAEstudiar;
         $report->save();
-    
-        return redirect()->route('examen.confirmation')->with('success', 'Examen guardado correctamente');     
+       
+         return redirect()->route('examen.confirmation');     
     }
         
   
