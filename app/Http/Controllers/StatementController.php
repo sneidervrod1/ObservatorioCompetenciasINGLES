@@ -33,8 +33,7 @@ class StatementController extends Controller {
                 'nullable',
                 'string',
                 'required_without_all:statementImage',
-                'regex:/^<iframe\swidth="560"\sheight="315"\ssrc="https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]+\?si=[a-zA-Z0-9_-]+"\stitle="YouTube\svideo\splayer"\sframeborder="0"\sallow="accelerometer;\sautoplay;\sclipboard-write;\sencrypted-media;\sgyroscope;\spicture-in-picture;\sweb-share"\sreferrerpolicy="strict-origin-when-cross-origin"\sallowfullscreen><\/iframe>$/'
-
+                'regex: /^<iframe\swidth="560"\sheight="315"\ssrc="https:\/\/www\.youtube-nocookie\.com\/embed\/[a-zA-Z0-9_-]+\?si=[a-zA-Z0-9_-]+"\stitle="YouTube\svideo\splayer"\sframeborder="0"\sallow="accelerometer;\sautoplay;\sclipboard-write;\sencrypted-media;\sgyroscope;\spicture-in-picture;\sweb-share"\sreferrerpolicy="strict-origin-when-cross-origin"\sallowfullscreen><\/iframe>$/'
             ],
         ], [
             'statement.regex' => 'El campo statement debe ser una URL válida de YouTube.',

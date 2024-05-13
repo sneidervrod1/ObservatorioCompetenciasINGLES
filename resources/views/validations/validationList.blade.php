@@ -55,25 +55,25 @@
                                     </td>
                                    
                                     <td class="text-center ">
-                                        <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-md">
+                                        {{-- <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-md">
                                             <a href= "{{ route('validation.crearQuestion', ['validationCategory' => $item->id]) }}">AGREGAR </a>
-                                        </button>
+                                        </button> --}}
                                     </td>
 
                                     <td class="text-center ">
-                                        <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded-md">
+                                        {{-- <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded-md">
                                             <a href= "{{ route('validation.actualizarValidacionCate', ['valCate' => $item->id]) }}">MODIFICAR </a>
-                                        </button>
+                                        </button> --}}
                                     </td>
 
                                     <td class="lg:pl-5 "> 
-                                        <form method="POST" action=" {{ route('validation.eliminarCatValidation', ['catValidation' => $item->id]) }}" >
+                                        {{-- <form method="POST" action=" {{ route('validation.eliminarCatValidation', ['catValidation' => $item->id]) }}" >
                                             @method('DELETE')
                                             @csrf
                                             <button type="button" class=" px-3 py-2 text-sm font-medium text-center text-red-500 hover:text-white bg-red-500 rounded-md hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-transparent dark:hover:bg-red-500 dark:focus:ring-red-600 border border-red-500">
                                                 <input type="submit" value="ELIMINAR">
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </td>
 
                                 </tr>
