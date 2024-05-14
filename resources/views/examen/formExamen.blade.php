@@ -9,11 +9,11 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100  font-mono">
                     <div class="container mx-auto p-4">
-                        {{-- <div class="border-2 border-red-500 rounded p-4">
+                        <div class="border-2 border-red-500 rounded p-4">
                             <h1 class="text-2xl font-semibold mb-4 ">Contador</h1>
                             <p class="mb-4">El contador se enviará automáticamente al llegar a cero.</p>
                             <p id="timer">El formulario se cerrará en:</p>
-                        </div> --}}
+                        </div>
                         <div class="flex items-center">
                             <form id="formulario" action="{{ route('examen.save', ['level' => $level] ) }}" method="POST">
                                 @csrf
@@ -95,3 +95,31 @@
  
 </x-app-layout>
 
+<script>
+    // Seteamos el tiempo en minutos
+    let tiempoRestante = 90 * 60; // 90 minutos * 60 segundos
+    
+    // Función para actualizar el temporizador cada segundo
+    function updateTimer() {
+        const timerElement = document.getElementById('timer');
+        const minutes = Math.floor(tiempoRestante / 60);
+        const seconds = tiempoRestante % 60;
+        timerElement.textContent = `El formulario se cerrará en: ${formatTime(minutes)}:${formatTime(seconds)}`;
+    
+        if (tiempoRestante <= 0) {
+            // Si el tiempo restante es igual o menor a cero, enviamos el formulario
+            document.getElementById('formulario').submit();
+        } else {
+            // Si el tiempo restante no ha llegado a cero, decrementamos en uno cada segundo
+            tiempoRestante--;
+        }
+    }
+    
+    // Función para agregar un cero delante de los números menores a 10
+    function formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+    }
+    
+    // Llamamos a la función updateTimer cada segundo
+    setInterval(updateTimer, 1000);
+</script>
