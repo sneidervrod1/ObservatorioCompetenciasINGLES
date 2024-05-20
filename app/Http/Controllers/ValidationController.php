@@ -34,6 +34,20 @@ class ValidationController extends Controller
             return view('validations.validationForm', compact('catVal'));
         }
     }
+    public function mostrarSinRegistro(){
+    
+            $Lista = Validation::join('users','users.id', '=', 'validations.user' )
+            ->select("users.name", "users.email", "validations.*")
+            ->get();
+
+            $personasencuesta = $Lista->count(); // Count validations from $Lista
+
+            return view('modelo.validation', [
+                'validations' => $Lista,
+                'personasencuesta' => $personasencuesta
+            ]);
+      
+    }
     public function recibir(Request $request){
         $respuestasEnviadas = $request->except('_token');
         $resultados = [];

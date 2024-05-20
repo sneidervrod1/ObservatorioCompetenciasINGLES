@@ -10,8 +10,27 @@
     </head>
 
     <body class="dark:bg-gray-900 mt-10">
-        <div class=" p-6 text-center ">
-            <h1 class=" text-slate-300 font-bold text-3xl"> MODELO </h1>
+        <div class=" p-6 text-center flex">
+            <div class="flex-1">
+                <button type="button" class="px-4 py-3 text-sm font-medium text-center text-green-500 hover:text-white bg-green-500 rounded-md hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-transparent dark:hover:bg-green-500 dark:focus:ring-green-600 border border-green-500">
+                    <span style="display: inline-block; vertical-align: middle;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                        </svg>
+                    </span>
+                    <a href="{{ url('/') }}" style="display: inline-block; vertical-align: middle; margin-left: 0.5rem;">VOLVER</a>
+                </button>
+            </div>
+            <div class="flex-1">
+                <h1 class=" text-slate-300 font-bold text-3xl"> MODELO </h1>
+            </div>
+            <div class="flex-1">
+                <button type="button" class=" px-4 py-3 text-sm font-medium text-center text-blue-500 hover:text-white bg-blue-500 rounded-md hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-transparent dark:hover:bg-blue-500 dark:focus:ring-blue-600 border border-blue-500">
+                    <a target="_blank" href="https://www.cambridgeenglish.org/es/exams-and-tests/cefr/">MODELO ALTE</a>
+
+                   </button>
+            </div>
+           
         </div>
         <div class=" sm:px-32 text-left ">
             <div class="sm:px-28">
@@ -23,14 +42,8 @@
                         desarrollado un esquema universal para medir LANGUAGE QUALIFICATIONS con el fin de entregar un estándar universal para evaluar el idioma.</p>
                                </div>
                 <div class="mt-5 flex justify-between">
-                    <button type="button" class=" px-4 py-3 text-sm font-medium text-center text-blue-500 hover:text-white bg-blue-500 rounded-md hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-transparent dark:hover:bg-blue-500 dark:focus:ring-blue-600 border border-blue-500">
-                     <a target="_blank" href="https://www.cambridgeenglish.org/es/exams-and-tests/cefr/">PARA CONOCER MAS ACERCA DEL MODELO ALTE</a>
+                    
 
-                    </button>
-
-                    <button type="butn" class=" px-4 py-3 text-sm font-medium text-center text-green-500 hover:text-white bg-green-500 rounded-md hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-transparent dark:hover:bg-green-500 dark:focus:ring-green-600 border border-green-500">
-                        <a href=" {{ url('/') }} ">VOLVER</a>
-                       </button>
                 </div>
                 
             </div>

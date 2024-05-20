@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/modelo', [ModeloController::class, 'mostrarmodelo'])->name('modelo');
+Route::get('/validations', [ValidationController::class, 'mostrarSinRegistro'])->name('validation.mostrarSinRegistro');
 
 Route::middleware('can:validation.crud')->group( function () {
     Route::get('/validation/lista', [ValidationController::class, 'listaCategorias'])->name('validation.lista');
@@ -52,6 +53,7 @@ Route::middleware('can:validation.crud')->group( function () {
 Route::middleware('can:validation.examen')->group( function () {
 
     Route::get('/validation', [ValidationController::class, 'mostrar'])->name('validation.mostrar');
+
     Route::post('/validation', [ValidationController::class, 'recibir'])->name('validation.recibir');
     
 });

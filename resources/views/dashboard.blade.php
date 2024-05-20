@@ -49,7 +49,7 @@
                                 </button>
                             </div>
                         </div>
-                    @can('validation.examen')
+                    @can(' .examen')
                     <div class="w-full bg-gradient-to-b from-gray-950 to-gray-600 b rounded-lg sahdow-lg p-12 flex flex-col justify-center items-center">
                         <div class="px-6 py-4 flex justify-center">    
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
