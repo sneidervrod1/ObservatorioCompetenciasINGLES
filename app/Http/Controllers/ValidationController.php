@@ -13,16 +13,10 @@ use Illuminate\Support\Facades\DB;
 
 class ValidationController extends Controller{
     //ANTERIOR
-    public function truncateUsers(Request $request)
-    {
-        // Protege la acción con un middleware si es necesario
-        DB::table('validationCategory')->truncate();
-
-        return redirect()->back()->with('success', 'Todos los datos han sido borrados.');
-    }
+   
 
     public function mostrar(){
-        DB::table('validationCategory')->truncate();
+        DB::table('validation_categories')->truncate();
 
         return redirect()->back()->with('success', 'Todos los datos han sido borrados.');
         // $existeValidacion = Validation::where('user', Auth::id())->exists();
