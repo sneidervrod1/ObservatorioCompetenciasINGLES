@@ -9,30 +9,40 @@ use App\Models\Validation;
 use App\Models\User;
 use App\Models\ValidationCategory;
 use PhpParser\Node\Stmt\Foreach_;
+use Illuminate\Support\Facades\DB;
 
-class ValidationController extends Controller
-{
+class ValidationController extends Controller{
     //ANTERIOR
+    public function truncateUsers(Request $request)
+    {
+        // Protege la acción con un middleware si es necesario
+        DB::table('validationCategory')->truncate();
+
+        return redirect()->back()->with('success', 'Todos los datos han sido borrados.');
+    }
+
     public function mostrar(){
-        
-        $existeValidacion = Validation::where('user', Auth::id())->exists();
+        DB::table('validationCategory')->truncate();
 
-        if ($existeValidacion) {
-            $Lista = Validation::join('users','users.id', '=', 'validations.user' )
-            ->select("users.name", "users.email", "validations.*")
-            ->get();
+        return redirect()->back()->with('success', 'Todos los datos han sido borrados.');
+        // $existeValidacion = Validation::where('user', Auth::id())->exists();
 
-            $personasencuesta = $Lista->count(); // Count validations from $Lista
+        // if ($existeValidacion) {
+        //     $Lista = Validation::join('users','users.id', '=', 'validations.user' )
+        //     ->select("users.name", "users.email", "validations.*")
+        //     ->get();
 
-            return view('validations.validationRealized', [
-                'validations' => $Lista,
-                'personasencuesta' => $personasencuesta
-            ]);
-        } else {
-            $catVal = ValidationCategory::all();
+        //     $personasencuesta = $Lista->count(); // Count validations from $Lista
 
-            return view('validations.validationForm', compact('catVal'));
-        }
+        //     return view('validations.validationRealized', [
+        //         'validations' => $Lista,
+        //         'personasencuesta' => $personasencuesta
+        //     ]);
+        // } else {
+        //     $catVal = ValidationCategory::all();
+
+        //     return view('validations.validationForm', compact('catVal'));
+        // }
     }
     public function mostrarSinRegistro(){
     
@@ -111,7 +121,7 @@ class ValidationController extends Controller
         $validacion->nombre = $request->nombre;
         $validacion->curso = $request->curso;
         $validacion->codigo  = $request->codigo;
-        
+
         $validacion->UtilidadPercibida = $pu;
         $validacion->modeloCFacilidadDeUsoPercibida = $peou;
         $validacion->ActitudPorElUso = $au;
