@@ -34,7 +34,7 @@
                                             <option value="75">De acuerdo </option>
                                             <option value="50">Ni de acuerdo ni en desacuerdo </option>
                                             <option value="25">En desacuerdo</option>
-                                            <option value="0">Totalmente en desacuerdo</option>
+                                            <option value="1">Totalmente en desacuerdo</option>
                                             
                                         </select>
                             
