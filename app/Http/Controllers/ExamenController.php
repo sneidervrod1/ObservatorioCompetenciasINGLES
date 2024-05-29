@@ -82,10 +82,7 @@ class ExamenController extends Controller
                
         }    
         $statementsAEstudiar = rtrim($statementsAEstudiar, ',');
-        // return $statementsAEstudiar;    
-        // return $totalWithSubcategories;
-        //return $statementsAEstudiar;
-        // HASTA ACA FUNCIONA EN PRODUCCION
+      
         $sumaPorSubcategoria = collect($totalWithSubcategories)->groupBy('category_level_id')
         ->map(function ($group) {
             return $group->sum('weighted_sum');

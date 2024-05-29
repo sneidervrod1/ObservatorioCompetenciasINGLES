@@ -49,13 +49,14 @@ class ValidationController extends Controller
       
     }
     public function recibir(Request $request){
-        $respuestasEnviadas = $request->except('_token');
+        $respuestasEnviadas = $request->except('_token', 'nombre', 'codigo', 'curso');
+        // return $respuestasEnviadas;
         $resultados = [];
         foreach ($respuestasEnviadas as $key => $value) {
                 $idPregunta = (int)$key;
                 $valor = (int)$value;
                 $peso = ValidationQuestion::where('id', $idPregunta)->value('weight_validation_question'); 
-                $X = ValidationQuestion::where('id', $idPregunta)->value('validation_category_id');  // Suponiendo que 'peso' es el nombre de la columna
+                $X = ValidationQuestion::where('id', $idPregunta)->value('validation_category_id'); 
                 $resultadoMultiplicacion = $valor * (0.01) * $peso;
               
                 $resultados[$idPregunta] = [
@@ -66,15 +67,13 @@ class ValidationController extends Controller
                 ];
         }
         // return $resultados;
-
-        foreach ($resultados as $resultado) {
-            $categoriaId = $resultado['validation_category_id'];
-            $valorPorcentual = $resultado['valorPorcentual'];   
-            if (!isset($sumasPorCategoria[$categoriaId])) {
-                $sumasPorCategoria[$categoriaId] = 0;
-            }
-            $sumasPorCategoria[$categoriaId] += $valorPorcentual;
-        }
+        $sumasPorCategoria = collect($resultados)->groupBy('validation_category_id')
+        ->map(function ($group) {
+            return $group->sum('valorPorcentual');
+        })->toArray();
+        
+      
+        // return $sumaPorSubcategoria;
         $pu = 0;
         $peou = 0;
         $au = 0;
