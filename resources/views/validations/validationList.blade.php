@@ -61,9 +61,9 @@
                                     </td>
 
                                     <td class="text-center ">
-                                        {{-- <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded-md">
+                                        <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded-md">
                                             <a href= "{{ route('validation.actualizarValidacionCate', ['valCate' => $item->id]) }}">MODIFICAR </a>
-                                        </button> --}}
+                                        </button>
                                     </td>
 
                                     <td class="lg:pl-5 "> 
