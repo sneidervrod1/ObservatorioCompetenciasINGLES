@@ -78,7 +78,7 @@ class ValidationController extends Controller
         $peou = 0;
         $au = 0;
         $iu = 0;
-
+        $sum =0;
         foreach ($sumasPorCategoria as $key => $value) {
             if ($key == "1") {
                 $pu = $value;
@@ -92,10 +92,7 @@ class ValidationController extends Controller
             if ($key == "4") {
                 $iu = $value;
             }
-        }
-        $sum =0;
 
-        foreach ($sumasPorCategoria as $key => $value) {
             $idCategory= (int)$key;
             $valor = (int)$value;
             $peso = ValidationCategory::where('id', $idCategory)->value('weight_validation_category'); 
@@ -103,6 +100,9 @@ class ValidationController extends Controller
             $resultadoMultiplicacion = $valor * (0.01) * $peso;
             $sum += $resultadoMultiplicacion;
         }
+       
+
+    
       
 
         $validacion = new Validation;
@@ -111,6 +111,7 @@ class ValidationController extends Controller
         $validacion->nombre = $request->nombre;
         $validacion->curso = $request->curso;
         $validacion->codigo  = $request->codigo;
+        
         $validacion->UtilidadPercibida = $pu;
         $validacion->modeloCFacilidadDeUsoPercibida = $peou;
         $validacion->ActitudPorElUso = $au;
