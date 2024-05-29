@@ -16,27 +16,30 @@ class ValidationController extends Controller{
    
 
     public function mostrar(){
-        DB::table('validations')->truncate();
+        //para borrar los datos 
+    
+        // DB::table('validations')->truncate();
 
-        return redirect()->back()->with('success', 'Todos los datos han sido borrados.');
-        // $existeValidacion = Validation::where('user', Auth::id())->exists();
+        // return redirect()->back()->with('success', 'Todos los datos han sido borrados.');
+    
+        $existeValidacion = Validation::where('user', Auth::id())->exists();
 
-        // if ($existeValidacion) {
-        //     $Lista = Validation::join('users','users.id', '=', 'validations.user' )
-        //     ->select("users.name", "users.email", "validations.*")
-        //     ->get();
+        if ($existeValidacion) {
+            $Lista = Validation::join('users','users.id', '=', 'validations.user' )
+            ->select("users.name", "users.email", "validations.*")
+            ->get();
 
-        //     $personasencuesta = $Lista->count(); // Count validations from $Lista
+            $personasencuesta = $Lista->count(); // Count validations from $Lista
 
-        //     return view('validations.validationRealized', [
-        //         'validations' => $Lista,
-        //         'personasencuesta' => $personasencuesta
-        //     ]);
-        // } else {
-        //     $catVal = ValidationCategory::all();
+            return view('validations.validationRealized', [
+                'validations' => $Lista,
+                'personasencuesta' => $personasencuesta
+            ]);
+        } else {
+            $catVal = ValidationCategory::all();
 
-        //     return view('validations.validationForm', compact('catVal'));
-        // }
+            return view('validations.validationForm', compact('catVal'));
+        }
     }
     public function mostrarSinRegistro(){
     
