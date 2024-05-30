@@ -80,24 +80,24 @@ class ValidationController extends Controller{
         })->toArray();
         
       
-        // return $sumaPorSubcategoria;
+        // return $sumasPorCategoria;
         $pu = 0;
         $peou = 0;
         $au = 0;
         $iu = 0;
         $sum =0;
         foreach ($sumasPorCategoria as $key => $value) {
-            if ($key == "1") {
-                $pu = $value;
+            if ($key === 1) {
+                $pu = (int)$value;
             }
-            if ($key == "2") {
-                $peou = $value;
+            if ($key === 2) {
+                $peou = (int)$value;
             }
-            if ($key == "3") {
-                $au = $value;
+            if ($key === 3) {
+                $au = (int)$value;
             }
-            if ($key == "4") {
-                $iu = $value;
+            if ($key === 4) {
+                $iu = (int)$value;
             }
 
             $idCategory= (int)$key;
@@ -123,7 +123,7 @@ class ValidationController extends Controller{
         $validacion->modeloCFacilidadDeUsoPercibida = $peou;
         $validacion->ActitudPorElUso = $au;
         $validacion->IntencionDeUso = $iu;
-        $validacion->totalAceptacion = $sum;
+        $validacion->totalAceptacion = (int)$sum;
         $validacion->save();
      
         return redirect()->route('validation.mostrar');
