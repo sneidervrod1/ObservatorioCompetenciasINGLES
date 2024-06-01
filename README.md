@@ -11,4 +11,4 @@ Implemente un sistema de autenticación seguro que permite a los usuarios regist
 ### Patrón de Arquitectura MVC: 
 Apliqué la arquitectura Modelo Vista Controlador, lo que facilitó la organización del código y la separación de responsabilidades, mejorando la mantenibilidad y escalabilidad del proyecto.
 ### Amazon S3:
-Los archivos multimedia (imágenes y videos) que se utilizan en las preguntas de los exámenes se almacenan en buckets de Amazon S3. Esta solución nos proporciona alta disponibilidad y redundancia para los contenidos.
+Los archivos multimedia (imágenes y videos) que se utilizan en las preguntas de los exámenes se almacenan en buckets de Amazon S3. Esta solución nos proporciona alta disponibilidad del contenidop y con la cual evitamos redundancia para los contenidos.
