@@ -35,8 +35,8 @@
                     <tbody>
                         <tr class="text-white">
                             <td class="px-6 py-4 whitespace-no-wrap font-bold text-center text-xl">NIVEL</td>
-                            <td class="px-6 py-4 whitespace-no-wrap font-bold text-center text-xl">CATEOGRIA</td>
-                            <td colspan="3" class="px-6 py-4 whitespace-no-wrap font-bold text-center text-xl">SUBCATEOGRIA</td>
+                            <td class="px-6 py-4 whitespace-no-wrap font-bold text-center text-xl">CATEGORIA</td>
+                            <td colspan="3" class="px-6 py-4 whitespace-no-wrap font-bold text-center text-xl">SUBCATEGORIA</td>
                             <td  class="px-6 py-4 whitespace-no-wrap font-bold text-center text-xl">AGREGAR</td>
                         </tr>
 

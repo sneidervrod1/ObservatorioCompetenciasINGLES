@@ -110,7 +110,7 @@
                                 @forelse($subcategorias as $subcategoria)
                                 <li class="mb-5"> {{ $subcategoria->description}}</li>
                                 @empty
-                                <li> Ninguna sus competencias en el nivel son muy buenas</li>
+                                <li> Ninguna, sus competencias en el nivel son muy buenas</li>
                                 @endforelse
                           </ul>
                         

@@ -70,9 +70,10 @@ class EncuestaController extends Controller
             $subcategory = Subcategory::find($subcategoryData['id']); // HALLAMOS LA SUBCATEOGRIA CON EL ID
 
             if($cantidad == 1){ // CUANDO SOLO QUEDA 1 REGISTRO POR ASGINAR PESO, SE ITERA ESTE IF
-                $x = 100 - $suma;
+                
+                $xy = 100 - $suma;
 
-                $subcategory->weight_subcategory = $x;
+                $subcategory->weight_subcategory = $xy;
                 $subcategory->save();
             }else{ // EN EL RESTO DE ITERACIONES SE ITERA ESTE IF 
                 $numero = rand(1, 100/(count($x)));
