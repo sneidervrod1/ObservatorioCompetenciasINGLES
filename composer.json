@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "3.0",
         "spatie/laravel-permission": "^6.7",
-        "laravel/breeze": "^1.28"
+        "laravel/breeze": "^1.28",
+        "ext-bcmath": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
