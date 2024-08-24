@@ -16,10 +16,8 @@ class ValidationController extends Controller{
    
 
     public function mostrar(){
-        //para borrar los datos 
-    
+        //para borrar los datos   
         // DB::table('validations')->truncate();
-
         // return redirect()->back()->with('success', 'Todos los datos han sido borrados.');
     
         $existeValidacion = Validation::where('user', Auth::id())->exists();
