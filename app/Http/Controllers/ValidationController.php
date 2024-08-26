@@ -44,6 +44,10 @@ class ValidationController extends Controller{
             $Lista = Validation::join('users','users.id', '=', 'validations.user' )
             ->select("users.name", "users.email", "validations.*")
             ->get();
+            // $Lista = Validation::join('users', 'users.id', '=', 'validations.user')
+            // ->select("users.name", "users.email", "validations.*")
+            // ->whereNotIn('users.id', [3,4])
+            // ->get();
 
             $personasencuesta = $Lista->count(); // Count validations from $Lista
 
