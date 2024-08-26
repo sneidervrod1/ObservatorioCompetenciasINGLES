@@ -87,7 +87,7 @@
                                 @foreach ($validations as $validation)
                                 
                                     <tr class="border-b">
-                                        <td class="px-4 py-2 text-center">{{ $validation->user }}</td>
+                                        <td class="px-4 py-2 text-center">{{ $validation->nombre }}</td>
                                         <td class="px-4 py-2 text-center">{{ $validation->curso }}</td>
                                         <td class="px-4 py-2 text-center">{{ $validation->codigo }}</td>
                                         <td class="px-4 py-2 text-center">{{ $validation->UtilidadPercibida }}</td>
