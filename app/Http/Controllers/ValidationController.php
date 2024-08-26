@@ -23,8 +23,9 @@ class ValidationController extends Controller{
         $existeValidacion = Validation::where('user', Auth::id())->exists();
 
         if ($existeValidacion) {
-            $Lista = Validation::join('users','users.id', '=', 'validations.user' )
+            $Lista = Validation::join('users', 'users.id', '=', 'validations.user')
             ->select("users.name", "users.email", "validations.*")
+            ->whereNotIn('users.id', [3,6,9,16])
             ->get();
 
             $personasencuesta = $Lista->count(); // Count validations from $Lista
@@ -41,13 +42,13 @@ class ValidationController extends Controller{
     }
     public function mostrarSinRegistro(){
     
-            $Lista = Validation::join('users','users.id', '=', 'validations.user' )
-            ->select("users.name", "users.email", "validations.*")
-            ->get();
-            // $Lista = Validation::join('users', 'users.id', '=', 'validations.user')
+            // $Lista = Validation::join('users','users.id', '=', 'validations.user' )
             // ->select("users.name", "users.email", "validations.*")
-            // ->whereNotIn('users.id', [3,4])
             // ->get();
+            $Lista = Validation::join('users', 'users.id', '=', 'validations.user')
+            ->select("users.name", "users.email", "validations.*")
+            ->whereNotIn('users.id', [3,6,9,16])
+            ->get();
 
             $personasencuesta = $Lista->count(); // Count validations from $Lista
 
