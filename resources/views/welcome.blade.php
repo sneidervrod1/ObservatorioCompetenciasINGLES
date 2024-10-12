@@ -130,10 +130,10 @@
                 <h2 class="text-white font-semibold text-xl">Enlaces útiles</h2>
                 <ul class="mt-4">
                   <li class="mb-2">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Manuales</a>
+                    <a href="https://drive.google.com/drive/folders/166hcMDcULZBbu88dzy4H2P2TxgPRR_D_?usp=drive_link" class="text-gray-400 hover:text-white transition-colors duration-200">Manuales</a>
                   </li>
                   <li class="mb-2">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Video explicativo</a>
+                    <a href="https://www.youtube.com/watch?v=YmiHvIWOZ-Q" class="text-gray-400 hover:text-white transition-colors duration-200">Video explicativo</a>
                   </li>
                 </ul>
         </div>
@@ -144,7 +144,7 @@
                 <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Formulario de contacto</a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Correo electrónico</a>
+                <a href="sacristanchoi@udistrital.edu.co" class="text-gray-400 hover:text-white transition-colors duration-200">Correo electrónico</a>
               </li>
               <li class="mb-2">
                 <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Teléfono</a>
