@@ -43,7 +43,18 @@ El sistema fue construido utilizando **Laravel** como framework de **back-end**,
 
 ---
 
-## Capturas de Pantalla
-(Agregar capturas de la interfaz de usuario y paneles administrativos, si es posible.)
+## PAGINA DE INICIO (ALL USERS)
+![PAGINA DE INICIO](public/capturaReadme/Imagen1.png)
 
+## MODIFICACION DE ENUNCIADOS (ADMINS)
+![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
+
+## MODIFICACION DE PREGUNTAS (ADMINS)
+![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
+
+## VISUALIZACION DE RESULTADOS (STUDENTS)
+![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
+
+## ENCUESTA DE SATISFACCION (STUDENTS)
+![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
 
