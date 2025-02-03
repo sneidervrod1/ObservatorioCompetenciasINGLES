@@ -53,8 +53,8 @@ El sistema fue construido utilizando **Laravel** como framework de **back-end**,
 ![PAGINA DE INICIO](public/capturaReadme/Imagen6.png)
 
 ## VISUALIZACION DE RESULTADOS (STUDENTS)
-![PAGINA DE INICIO](public/capturaReadme/Imagen7.png)
+![PAGINA DE INICIO](public/capturaReadme/Imagen7.jpg)
 
 ## ENCUESTA DE SATISFACCION (STUDENTS)
-![PAGINA DE INICIO](public/capturaReadme/Imagen8.png)
+![PAGINA DE INICIO](public/capturaReadme/Imagen8.jpg)
 
