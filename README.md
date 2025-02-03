@@ -50,11 +50,11 @@ El sistema fue construido utilizando **Laravel** como framework de **back-end**,
 ![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
 
 ## MODIFICACION DE PREGUNTAS (ADMINS)
-![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
+![PAGINA DE INICIO](public/capturaReadme/Imagen6.png)
 
 ## VISUALIZACION DE RESULTADOS (STUDENTS)
-![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
+![PAGINA DE INICIO](public/capturaReadme/Imagen7.png)
 
 ## ENCUESTA DE SATISFACCION (STUDENTS)
-![PAGINA DE INICIO](public/capturaReadme/Imagen5.png)
+![PAGINA DE INICIO](public/capturaReadme/Imagen8.png)
 
